@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>                 
+        <menuitem 
+        	id="main_menu_hospital_management"
+        	name="Gestión de hospital"
+            web_icon="basic_hms,static/description/icon.png"
+           />
+
+         <menuitem name="Configuración"
+            id="main_menu_configartion"
+            parent = "main_menu_hospital_management"
+            sequence = '13'
+            />
+            
+               
+    	<menuitem name="Laboratorio"
+            id="main_menu_conf_laboratory"
+            parent = "main_menu_configartion"
+            sequence='0'
+           />
+
+        <menuitem id="menu_nursing" name="Enfermería"
+            parent="main_menu_hospital_management"
+            sequence="8" />
+
+        <menuitem id="menu_appointment"
+            name='Citas' parent="main_menu_hospital_management" sequence="1" />
+
+        <menuitem id="menu_medical_health_service"
+            name='Servicio Médico' parent="main_menu_hospital_management"
+            sequence="11" />
+
+         <menuitem id="menu_inpatient_administration" name="Administración de pacientes hospitalizados"
+            parent="main_menu_hospital_management" sequence='2' />
+
+        <menuitem id="menu_patients" name='Pacientes'
+            parent="main_menu_hospital_management" sequence="0" />
+
+        <menuitem name="Pediatría" id="main_menu_pediatrics"
+            parent="main_menu_hospital_management"
+            sequence="6" />
+
+
+        <menuitem id="menu_medical_paper_archive"
+            name='Archivo' parent="main_menu_hospital_management" sequence="4" />
+
+        <menuitem id="menu_medical_surgery"
+            name='Cirugía' parent="main_menu_hospital_management"
+            sequence="9" />
+
+        <menuitem id="menu_genetic" name="Genética"
+            parent="main_menu_configartion" sequence='10' />
+
+
+        <menuitem id="menu_intensive_care" name="Cuidados intensivos"
+            parent="menu_inpatient_administration" />
+
+        <menuitem id="menu_medical_management" name="Médico" />
+
+        <menuitem id="menu_insurance" 
+                name="Seguros" 
+                parent="main_menu_configartion"
+                sequence='9'/>
+
+
+
+</openerp>
