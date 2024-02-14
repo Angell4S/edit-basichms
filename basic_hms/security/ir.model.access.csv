@@ -215,4 +215,6 @@ access_medical_lab_test_invoice,medical.lab.test.invoice,model_medical_lab_test_
 access_medical_patient_doctor,medical.group.patient.doctor,model_medical_patient,group_clinic,1,1,1,1
 access_doctor_medical_patient_disease,medical.doctor.group.medical.patient.disease,model_medical_patient_disease,group_clinic,1,1,1,1
 access_vaccination,medical.group.vaccination,model_medical_vaccination,group_clinic,1,1,1,1
-access_medical_insurance,medical.insurance,model_medical_insurance,group_clinic,1,1,1,0
+access_medical_insurance,medical.insurance,model_medical_insurance,group_clinic,1,1,1
+access_multi_image_manager,multi_image_manager,model_multi_image,,1,1,1,1
+access_medical_patient_history_manager,medical_patient_history_manager,model_medical_patient_history,,1,1,1,1
