@@ -132,8 +132,7 @@
                                     <field name="name"/>
                                     <field name="control_date"/>
                                     <field name="before_image_ids" widget="badge"/>
-                                    <field name="observation" widget="badge" invisible="1"/>
-                                    <field name="obs_state" widget="badge" decoration-success = "observation != False"/>
+                                    <field name="obs_state" widget="badge" decoration-success = "obs_state == 'with_obs'" decoration-danger = "obs_state == 'without_obs'"/>
                                 </tree>
                             </field>
                         </page>

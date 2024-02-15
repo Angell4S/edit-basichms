@@ -53,4 +53,12 @@ class MedicalPatientHistory(models.Model):
             ('with_obs', 'Con Observaciones'),
             ('without_obs', 'Sin Observaciones'),
         ],
+        compute='_compute_obs_state',
+        default='without_obs',
+        store=True,
     )
+
+    @api.depends('observation')
+    def _compute_obs_state(self):
+        if isinstance(self.observation, str) or self.observation != '':
+            self.obs_state = 'with_obs'
