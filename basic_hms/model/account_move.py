@@ -30,3 +30,12 @@ class AccountMoveLine(models.Model):
         string=_('Patient'),
         comodel_name='medical.patient',
     )
+
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+        patient = self.env['medical.patient'].search(
+            [('patient_id', '=', self._context.get('default_partner_id'))]
+        )
+        res.update({'patient_id': patient.id})
+        return res

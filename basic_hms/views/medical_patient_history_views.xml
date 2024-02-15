@@ -8,9 +8,12 @@
         <field name="arch" type="xml">
             <tree string="Medical Patient History">
                 <field name="product_id"/>
+                <field name="name"/>
+                <field name="control_date"/>
                 <field name="move_id"/>
-                <field name="before_image_ids"/>
-                <field name="observation"/>
+                <field name="treatment_date"/>
+                <field name="before_image_ids" widget="badge"/>
+                <field name="observation" widget="html"/>
             </tree>
         </field>
     </record>
@@ -23,11 +26,14 @@
             <form string="Medical Patient History">
                 <header></header>
                 <sheet>
+                    <field name="move_line_id" invisible="1"/>
                     <div class="oe_title">
                         <label for="move_id"/>
                         <h1>
-                            <field name="move_id" placeholder="Move..."/>
+                            <field name="move_id" placeholder="Move..." attrs="{'invisible': [('move_line_id', '=', False)]}"/>
+                            <field name="name" placeholder="Name..." attrs="{'invisible': [('move_line_id', '!=', False)]}"/>
                         </h1>
+                        <field name="control_date" attrs="{'invisible': [('move_line_id', '!=', False)]}"/>
                     </div>
                     <!-- <group>
                         <group>
@@ -82,7 +88,7 @@
                             </field>
                         </group>
                     </div>
-                    <field name="observation"/>
+                    <field name="observation" widget="html"/>
                 </sheet>
             </form>
         </field>

@@ -43,4 +43,6 @@ class MedicalPatientHistory(models.Model):
         comodel_name='medical.patient',
     )
 
+    control_date = fields.Date(string=_('Control Date'))
+
     observation = fields.Text(string=_('Observation'))

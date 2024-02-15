@@ -127,15 +127,13 @@
                             <field name="history_ids">
                                 <tree>
                                     <field name="product_id"/>
-                                    <field name="treatment_date"/>
+                                    <field name="name"/>
+                                    <field name="control_date"/>
                                     <field name="move_id"/>
-                                    <field name="observation"/>
+                                    <field name="treatment_date"/>
+                                    <field name="before_image_ids" widget="badge"/>
                                 </tree>
                             </field>
-                            <!-- <group>
-                                <field name="tratamiento_paciente" editable="bottom"/>
-                                <field name="fecha_trat_paciente" editable="bottom"/>
-                            </group> -->
                         </page>
 
                         <page string="Diseases" invisible="1">
