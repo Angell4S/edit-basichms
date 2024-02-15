@@ -27,7 +27,7 @@ class AccountMoveLine(models.Model):
     _description = _('Account Move Line')
 
     patient_id = fields.Many2one(
-        string=_('Patient'),
+        string=_('Paciente'),
         comodel_name='medical.patient',
     )
 

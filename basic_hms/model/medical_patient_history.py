@@ -5,32 +5,32 @@ class MedicalPatientHistory(models.Model):
     _name = 'medical.patient.history'
     _description = _('Medical Patient History')
 
-    name = fields.Char(string=_('Name'))
+    name = fields.Char(string=_('Nombre'))
 
     move_line_id = fields.Many2one(
-        string=_('Sevice'),
+        string=_('Servicio'),
         comodel_name='account.move.line',
     )
     product_id = fields.Char(
         related='move_line_id.product_id.name',
-        string=_('Treatment'),
+        string=_('Tratamiento'),
     )
     move_id = fields.Many2one(
         related='move_line_id.move_id',
         comodel_name='account.move',
-        string=_('Move'),
+        string=_('Factura'),
     )
     treatment_date = fields.Date(
         related='move_id.date',
-        string=_('Treatment Date'),
+        string=_('Fecha de la Factura'),
     )
 
     before_image_ids = fields.One2many(
-        string=_('Images'),
+        string=_('Imágenes'),
         comodel_name='multi.image',
         inverse_name='history_id',
     )
-    before_image = fields.Binary(string=_('Images'))
+    before_image = fields.Binary(string=_('Imágenes'))
     after_image_ids = fields.One2many(
         string=_('After Images'),
         comodel_name='multi.image',
@@ -39,10 +39,18 @@ class MedicalPatientHistory(models.Model):
     after_image = fields.Binary(string=_('After Image'))
 
     patient_id = fields.Many2one(
-        string=_('Patient'),
+        string=_('Paciente'),
         comodel_name='medical.patient',
     )
 
-    control_date = fields.Date(string=_('Control Date'))
+    control_date = fields.Date(string=_('Fecha del Control'))
 
-    observation = fields.Text(string=_('Observation'))
+    observation = fields.Text(string=_('Observaciones'))
+
+    obs_state = fields.Selection(
+        string=_('Estado de las Observaciones'),
+        selection=[
+            ('with_obs', 'Con Observaciones'),
+            ('without_obs', 'Sin Observaciones'),
+        ],
+    )
