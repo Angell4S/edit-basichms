@@ -68,6 +68,7 @@ from . import res_partner
 from . import multi_image
 from . import medical_patient_history
 from . import account_move
+from . import sale_order
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:s

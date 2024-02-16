@@ -62,9 +62,11 @@ class MedicalPatientHistory(models.Model):
     def _compute_obs_state(self):
         for rec in self:
             rec.obs_state = 'with_obs'
-            if (
-                rec.observation is None
-                or len(rec.observation) == 0
-                or ('<p><br></p>' in rec.observation)
-            ):
+            if isinstance(rec.observation, bool):
                 rec.obs_state = 'without_obs'
+                continue
+            if rec.observation is None or ('<p><br></p>' in rec.observation):
+                rec.obs_state = 'without_obs'
+
+    # Pruebas de imagenes
+    image = fields.Many2many('ir.attachment', string="Image")
