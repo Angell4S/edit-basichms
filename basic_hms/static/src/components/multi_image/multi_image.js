@@ -10,38 +10,31 @@ export class MultiImage extends Component {
   setup() {
     this.orm = useService("orm");
     this.state = useState({
-      images: [],
+      before: [],
       options: {},
     });
 
     onWillStart(() => this.loadImage());
 
     onMounted(() => {
-      if (this.state.images.length < 2) {
-        return;
-      }
-      const images = this.state.images
-        .sort((a, b) => a.sequence - b.sequence)
-        .map((item) => item.image_1920);
-      $("#compare").imgCmp({
-        before: `data:image/png;base64,${images[1]}`,
-        after: `data:image/png;base64,${images[0]}`,
-      });
+      // if (this.state.images.length < 2) {
+      //   return;
+      // }
+      // const images = this.state.images
+      //   .sort((a, b) => a.sequence - b.sequence)
+      //   .map((item) => item.image_1920);
+      // $(".thumb-item").brazzersCarousel();
     });
   }
 
   async loadImage() {
-    // Img Compare
-    await loadJS("/basic_hms/static/src/libs/imgcmp/imgcmp.js");
-
-    const ids = this.props.record.data[this.props.multiOptions.ref].resIds;
-    const images = await this.orm.searchRead(
+    const before_ids = this.props.record.data.before_image_ids.resIds;
+    this.state.before = await this.orm.searchRead(
       "multi.image",
-      [["id", "in", ids]],
+      [["id", "in", before_ids]],
       ["name", "image_1920", "sequence"],
       { order: "sequence asc" }
     );
-    this.state.images = images;
   }
 }
 
@@ -57,7 +50,7 @@ MultiImage.defaultProps = {
 };
 
 MultiImage.extractProps = ({ attrs }) => {
-  console.log(attrs);
+  console.log(attrs.options);
   return {
     multiOptions: attrs.options,
   };
