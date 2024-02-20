@@ -93,7 +93,14 @@
                             </field>
                         </group>
                     </group>
-                    <field name="observation" widget="html"/>
+                    <div class="row">
+                        <div class="w-100">
+                            <label for="observation">
+                                <h3>Observaciones</h3>
+                            </label>
+                            <field name="observation" widget="html"/>
+                        </div>
+                    </div>
                 </sheet>
             </form>
         </field>

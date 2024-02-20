@@ -29,6 +29,11 @@ export class MultiImage extends Component {
 
   async loadImage() {
     const before_ids = this.props.record.data.before_image_ids.resIds;
+    console.log(before_ids);
+    if (before_ids.length === 0 || before_ids === undefined) {
+      this.state.before = [];
+      return;
+    }
     this.state.before = await this.orm.searchRead(
       "multi.image",
       [["id", "in", before_ids]],

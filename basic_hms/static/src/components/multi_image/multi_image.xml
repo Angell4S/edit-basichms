@@ -2,9 +2,11 @@
 <templates xml:space="preserve">
     <t t-name="basic_hms.MultiImage" owl="1">
         <!-- <div id="compare"></div> -->
-        <div class="d-flex">
-            <img class="d-block w-50" t-att-src="`data:image/png;base64,${this.state.before[0].image_1920}`" alt="First Image"/>
-            <img class="d-block w-50" t-att-src="`data:image/png;base64,${this.state.before[1].image_1920}`" alt="Second Image"/>
-        </div>
+        <t t-if="this.state.before.length >= 2">
+            <div class="d-flex justify-content-between">
+                <img class="d-block w-50" t-att-src="`data:image/png;base64,${this.state.before[0].image_1920}`" alt="First Image"/>
+                <img class="d-block w-50" t-att-src="`data:image/png;base64,${this.state.before[1].image_1920}`" alt="Second Image"/>
+            </div>
+        </t>
     </t>
 </templates>
